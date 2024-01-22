@@ -15,13 +15,20 @@
 <nav th:replace="fragments/navbar :: topNavbar()"></nav>
 
 <div class="container">
-    <h1>Add new pizza</h1>
+    <h1 th:text="${ricetta.id == null ? 'Crea una Ricetta' : 'Modifica ricetta'}"></h1>
+    <hr>
+    <th:block th:if="${ricetta.id == null}">
+        <th:block th:with="action = @{/ricette/create}"></th:block>
+    </th:block>
+    <th:block th:if="${ricetta.id != null}">
+        <th:block th:with="action = @{/ricette/edit/{id}(id=${ricetta.id})}"></th:block>
+    </th:block>
     <hr>
     <form
-            id="create-pizza"
+            id="ricette"
             method="post"
             th:object="${ricetta}"
-            th:action="@{/ricette/newRicetta}"
+            th:action="${action}"
             class="row gy-3"
     >
         <div class="col-6">

@@ -24,7 +24,9 @@
                 <p th:text="|Porzioni: ${ricetta.numberOfPortions} persone|"></p>
                 <p th:text="|Istruzioni: ${ricetta.instructions}|"></p>
                 <p th:text="|Ingredienti: ${ricetta.ingredients}|"></p>
-                <p th:text="|Tipo: ${ricetta.type}|"></p>
+                <div th:if="${ricetta.type.name != null}">
+                    <p th:text="|Tipo: ${ricetta.type.name}|"></p>
+                </div>
             </div>
         </div>
     </div>

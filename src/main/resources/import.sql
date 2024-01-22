@@ -10,3 +10,5 @@ INSERT INTO ricetta (name, image_url, preparation_time, number_of_portions, inst
 
 INSERT INTO ricetta_type (name) VALUES('Primo piatto');
 INSERT INTO ricetta_type (name) VALUES('Secondo piatto');
+INSERT INTO ricetta_type (name) VALUES('Desert');
+INSERT INTO ricetta_type (name) VALUES('Antipasto');
