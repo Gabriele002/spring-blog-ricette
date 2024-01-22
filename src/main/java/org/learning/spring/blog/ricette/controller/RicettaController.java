@@ -104,7 +104,7 @@ public class RicettaController {
         if (result.isPresent()){
             ricettaRepository.deleteById(id);
             redirectAttributes.addFlashAttribute("redirectMessage","Pizza" + result.get().getName() + "deleted!");
-            return "redirect:/pizzas";
+            return "redirect:/ricette";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found");
         }
