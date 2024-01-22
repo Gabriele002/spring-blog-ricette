@@ -1,13 +1,15 @@
-# Connection properties
-spring.datasource.url=jdbc:mysql://localhost:3306/db_ricette
-spring.datasource.username=root
-spring.datasource.password=Gabriele_02
-# Hibernate ddl auto (create, create-drop, validate, update)
-spring.jpa.hibernate.ddl-auto=create-drop
-# Log SQL
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-#Thymeleaf cache disable
-spring.thymeleaf.cache=false
-# Formato delle date
-spring.mvc.format.date=yyyy-MM-dd
+.card-img-top {
+ height: 300px;
+ object-fit: cover;
+}
+
+.card {
+ width: 300px;
+ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+ background-color: #ccc;;
+ }
+
+body {
+ background-image: url("/aaaa.jpg");
+ background-size: cover;
+}

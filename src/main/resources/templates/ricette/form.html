@@ -12,7 +12,7 @@
     <title>Add Ricetta</title>
 </head>
 <body>
-<nav th:replace="fragments/navbar :: topNavbar()"></nav>
+<nav th:replace="fragments/navbar :: topNavbar('form')"></nav>
 
 <div class="container">
     <h1 th:text="${ricetta.id == null ? 'Crea una Ricetta' : 'Modifica ricetta'}"></h1>
@@ -23,7 +23,6 @@
     <th:block th:if="${ricetta.id != null}">
         <th:block th:with="action = @{/ricette/edit/{id}(id=${ricetta.id})}"></th:block>
     </th:block>
-    <hr>
     <form
             id="ricette"
             method="post"

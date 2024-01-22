@@ -30,9 +30,15 @@ public class RicettaController {
     private IngredientRepository ingredientRepository;
 
     @GetMapping
-    public String index(Model model) {
-        List<Ricetta> ricettaList = ricettaRepository.findAll();
+    public String index(@RequestParam(name = "keyword", required = false) String searchKeyword, Model model) {
+        List<Ricetta> ricettaList;
+        if (searchKeyword != null) {
+            ricettaList = ricettaRepository.findByNameContaining(searchKeyword);
+        } else {
+            ricettaList = ricettaRepository.findAll();
+        }
         model.addAttribute("ricettaList", ricettaList);
+        model.addAttribute("preloadSearch", searchKeyword);
         return "ricette/home";
     }
 
@@ -46,6 +52,7 @@ public class RicettaController {
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza " + id + " not found");
         }
+
 
     }
 
