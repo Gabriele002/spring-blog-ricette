@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <title>Show </title>
+</head>
+<body>
+    <nav th:replace="fragments/navbar :: topNavbar()"></nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+
+                <h1 class="text-danger"> Ricetta details</h1>
+                <p th:text="|Nome: ${ricetta.name}|"></p>
+                <p th:text="|Tempo di preparazione: ${ricetta.preparationTime} minuti|"></p>
+                <p th:text="|Porzioni: ${ricetta.numberOfPortions} persone|"></p>
+                <p th:text="|Istruzioni: ${ricetta.instructions}|"></p>
+                <p th:text="|Ingredienti: ${ricetta.ingredients}|"></p>
+            </div>
+        </div>
+    </div>
+    <a class="btn btn-primary" th:href="@{/ricette}" role="button"> Back to ricette list</a>
+</body>
+</html>

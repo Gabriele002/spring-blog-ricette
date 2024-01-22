@@ -16,15 +16,12 @@ public class Ricetta {
 
     @NotEmpty(message = "Name must not be blank")
     private String name;
-
     private String imageUrl;
     private String preparationTime;
-    private String totalTime;
-    private int servings;
+    private String numberOfPortions;
     private String instructions;
-    @ManyToMany
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private List<Ingredient> ingredients;
+
+    private String ingredients;
 
     @ManyToOne
     private RicettaType type;
@@ -61,21 +58,6 @@ public class Ricetta {
         this.preparationTime = preparationTime;
     }
 
-    public String getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(String totalTime) {
-        this.totalTime = totalTime;
-    }
-
-    public int getServings() {
-        return servings;
-    }
-
-    public void setServings(int servings) {
-        this.servings = servings;
-    }
 
     public String getInstructions() {
         return instructions;
@@ -85,11 +67,11 @@ public class Ricetta {
         this.instructions = instructions;
     }
 
-    public List<Ingredient> getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -99,5 +81,13 @@ public class Ricetta {
 
     public void setType(RicettaType type) {
         this.type = type;
+    }
+
+    public String getNumberOfPortions() {
+        return numberOfPortions;
+    }
+
+    public void setNumberOfPortions(String numberOfPortions) {
+        this.numberOfPortions = numberOfPortions;
     }
 }

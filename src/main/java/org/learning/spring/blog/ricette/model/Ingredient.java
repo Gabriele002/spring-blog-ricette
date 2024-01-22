@@ -19,7 +19,7 @@ public class Ingredient {
     private String name;
     @Min(value = 1)
     @NotNull(message = "The amount must be greater than 1")
-    private Integer amount;
+    private double amount;
 
     public Integer getId() {
         return id;
@@ -37,11 +37,11 @@ public class Ingredient {
         this.name = name;
     }
 
-    public Integer getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 }
