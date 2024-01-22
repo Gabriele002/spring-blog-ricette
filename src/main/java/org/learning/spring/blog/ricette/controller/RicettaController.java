@@ -1,5 +1,6 @@
 package org.learning.spring.blog.ricette.controller;
 
+import jakarta.validation.Valid;
 import org.learning.spring.blog.ricette.interfaccie.IngredientRepository;
 import org.learning.spring.blog.ricette.interfaccie.RicettaRepository;
 import org.learning.spring.blog.ricette.interfaccie.RicettaTypeRepository;
@@ -8,9 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -44,6 +44,26 @@ public class RicettaController {
             return "ricette/show";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza " + id + " not found");
+        }
+
+    }
+
+    @GetMapping("/newRicetta")
+    public String create(Model model) {
+        Ricetta ricetta = new Ricetta();
+        model.addAttribute("ricetta", ricetta);
+        model.addAttribute("ricettaTypeList", ricettaTypeRepository.findAll());
+        return "ricette/newRicetta";
+    }
+
+    @PostMapping("/newRicetta")
+    public String store(@Valid @ModelAttribute("ricetta") Ricetta formRicetta, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("ricettaTypeList", ricettaTypeRepository.findAll());
+            return "ricette/newRicetta";
+        } else {
+            Ricetta savePizza = ricettaRepository.save(formRicetta);
+            return "redirect:/ricette";
         }
 
     }
